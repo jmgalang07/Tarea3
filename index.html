@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestor de Gastos</title>
+  <link rel="stylesheet" href="./src/css/style.css" />
+  <script src="./src/js/script.js" defer></script>
+</head>
+
+<body>
+  <!--HOME-->
+  <div id="home" class="container visible">
+    <div class="titulo">
+      <h2>Home</h2>
+    </div>
+    <div class="agregarHome">
+      <button class="botonAgregar" onclick="displayPage('addExpense')">+</button>
+    </div>
+    <div class="contenidoHome">
+      <div class="informacionHome" id="expenseList">
+        <!-- Aquí se llenará la lista de gastos -->
+      </div>
+    </div>
+    <div class="botones">
+      <button onclick="displayPage('users')">Users</button>
+      <button onclick="displayPage('balances')">Balances</button>
+    </div>
+  </div>
+
+  <!--USERS-->
+  <div id="users" class="container">
+    <div class="titulo">
+      <h2>Users</h2>
+    </div>
+    <div class="formularioUser">
+      <div class="informacionUsers" id="userList">
+        <!-- Aquí se llenará la lista de usuarios -->
+      </div>
+    </div>
+    <div class="botones">
+      <button onclick="displayPage('home')">Home</button>
+      <button onclick="displayPage('addUser')">Add user</button>
+    </div>
+  </div>
+
+  <!--ADD USER-->
+  <div id="addUser" class="container">
+    <div class="titulo">
+      <h2>Add an User</h2>
+    </div>
+    <div class="formulario">
+      <form onsubmit="addUser(); return false;">
+        <div class="informacionUser">
+          <label class="name">Name <br /><input type="text" id="userName" /></label>
+        </div>
+        <div class="informacionUser">
+          <label>Genre</label><br />
+          <div class="logos">
+            <input type="radio" id="logo1" name="logo" value="Male"  />
+            <label for="logo1">
+              <img class="logo" src="./src/img/gender-male.png" alt="Male" />
+            </label>
+            <input type="radio" id="logo2" name="logo" value="Female" />
+            <label for="logo2">
+              <img class="logo" src="./src/img/gender-female.png" alt="Female" />
+            </label><br />
+          </div>
+        </div>
+        <div class="informacionUser">
+          <label>Icon</label><br />
+          <div class="imagenes">
+            <input type="radio" id="icon1" name="icon" value="Gref"  />
+            <label for="icon1">
+              <img src="./src/img/gref.png" alt="Gref" />
+            </label>
+            <input type="radio" id="icon4" name="icon" value="Fandom" />
+            <label for="icon4">
+              <img src="./src/img/fandom.png" alt="Fandom" />
+            </label><br />
+            <input type="radio" id="icon2" name="icon" value="Fisherman" />
+            <label for="icon2">
+              <img src="./src/img/fisherman.png" alt="Fisherman" />
+            </label>
+            <input type="radio" id="icon3" name="icon" value="Maggie" />
+            <label for="icon3">
+              <img src="./src/img/maggie.png" alt="Maggie" />
+            </label>
+          </div>
+        </div>
+        <div class="botonesUser">
+          <button type="button" onclick="displayPage('home')">Back</button>
+          <button type="submit">Confirm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!--ADD EXPENSE-->
+  <div id="addExpense" class="container">
+    <div class="titulo">
+      <h2>Add an Expense</h2>
+    </div>
+    <div class="formulario">
+      <form onsubmit="addExpense(); return false;">
+        <div class="informacion">
+          <img src="./src/img/image.png" alt="Money">
+          <label class="user">Usuario <br />
+            <select id="expenseUser">
+              <option value="">Selecciona un usuario</option>
+            </select>
+          </label><br />
+        </div>
+        <div class="informacion">
+          <img src="./src/img/money.png" alt="Money">
+          <label class="amount"> Amount <br />
+            <input type="number" id="amount" step="0.01" />
+          </label><br />
+        </div>
+        <div class="informacion">
+          <img src="./src/img/car.png" alt="Money">
+          <label class="title">Title <br />
+            <input type="text" id="title" />
+          </label><br />
+        </div>
+        <div class="botonesExpense">
+          <button type="button" onclick="displayPage('home')">Back</button>
+          <button type="submit">Confirm</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <!--BALANCES-->
+  <div id="balances" class="container">
+    <div class="titulo">
+      <h2>Balances</h2>
+    </div>
+    <div class="formularioBalances" id="balanceList">
+      <div class="informacionBalances">
+
+      </div>
+    </div>
+    <div class="botones">
+      <button onclick="displayPage('home')">Home</button>
+      <button id="settleUpButton" onclick="settleUp()">Settle Up</button>
+    </div>
+  </div>
+</body>
+
+</html>
