@@ -6,7 +6,7 @@ class AddUser {
   constructor(name, genero, icono) {
     this.name = name;
     this.genero = genero;
-    this.icono = icono; 
+    this.icono = icono;
   }
 }
 
@@ -24,7 +24,7 @@ class AddExpense {
 function displayPage(pageID) {
   const pages = document.querySelectorAll(".container");
   pages.forEach((page) => page.classList.remove("visible"));
-  
+
   document.getElementById(pageID).classList.add("visible");
 
   if (pageID === "balances") {
@@ -64,7 +64,7 @@ function addUser() {
 
 // Clear user fields
 function clearUserFields() {
-  document.getElementById("userName").value = '';
+  document.getElementById("userName").value = "";
   document.querySelector('input[name="logo"]:checked').checked = false;
   document.querySelector('input[name="icon"]:checked').checked = false;
 }
@@ -85,7 +85,8 @@ function updateUserList() {
 
 function updateUserSelect() {
   const userSelect = document.getElementById("expenseUser");
-  userSelect.innerHTML = '<option value="">Select a user</option>';
+  userSelect.innerHTML =
+    '<option value="" disabled selected>Select a user</option>';
 
   if (users.length === 0) {
     const option = document.createElement("option");
@@ -129,7 +130,12 @@ function addExpense() {
 
   const trimmedTitle = title.trim();
 
-  const newExpense = new AddExpense(userName, parseFloat(amount), trimmedTitle, currentDate);
+  const newExpense = new AddExpense(
+    userName,
+    parseFloat(amount),
+    trimmedTitle,
+    currentDate
+  );
   expenses.push(newExpense);
 
   updateExpenseList();
@@ -137,8 +143,8 @@ function addExpense() {
 }
 
 function clearExpenseFields() {
-  document.getElementById("amount").value = '0';
-  document.getElementById("title").value = '';
+  document.getElementById("amount").value = "0";
+  document.getElementById("title").value = "";
 }
 
 // Update Expense List
@@ -204,7 +210,9 @@ function showBalances() {
     const pronoun = getPronoun(user);
 
     balanceItem.innerHTML = `
-        <img src="./src/img/${balanceMap[user].icono}.png" alt="Icono de ${user}" />
+        <img src="./src/img/${
+          balanceMap[user].icono
+        }.png" alt="Icono de ${user}" />
         <label class="title">${user} <br />
           <p>${pronoun} has paid ${balanceMap[user].totalPaid.toFixed(2)} €</p>
           <p>${pronoun} is owed ${balanceMap[user].totalOwed.toFixed(2)} €</p>
